@@ -1,0 +1,10 @@
+{
+    "patokasApp": {
+        "Position" : {
+            "null": "",
+            "NEW_JOINER": "NEW_JOINER",
+            "ACTIVE": "ACTIVE",
+            "LEFT": "LEFT"
+        }
+    }
+}

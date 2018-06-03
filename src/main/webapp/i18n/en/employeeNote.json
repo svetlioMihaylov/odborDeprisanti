@@ -1,0 +1,26 @@
+
+{
+    "patokasApp": {
+        "employeeNote" : {
+            "home": {
+                "title": "Employee Notes",
+                "createLabel": "Create a new Employee Note",
+                "createOrEditLabel": "Create or edit a Employee Note"
+            },
+            "created": "A new Employee Note is created with identifier {{ param }}",
+            "updated": "A Employee Note is updated with identifier {{ param }}",
+            "deleted": "A Employee Note is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Employee Note {{ id }}?"
+            },
+            "detail": {
+                "title": "Employee Note"
+            },
+            "title": "Title",
+            "text": "Text",
+            "date": "Date",
+            "employeeNoteType": "Employee Note Type",
+            "owner": "Owner"
+        }
+    }
+}

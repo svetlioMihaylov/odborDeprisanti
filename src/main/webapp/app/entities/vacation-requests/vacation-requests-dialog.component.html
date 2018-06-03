@@ -1,0 +1,91 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myVacationRequestsLabel" jhiTranslate="patokasApp.vacationRequests.home.createOrEditLabel">Create or edit a Vacation Requests</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!vacationRequests.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="vacationRequests.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.vacationRequests.startDate" for="field_startDate">Start Date</label>
+            <input type="text" class="form-control" name="startDate" id="field_startDate"
+                [(ngModel)]="vacationRequests.startDate" required/>
+            <div [hidden]="!(editForm.controls.startDate?.dirty && editForm.controls.startDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.startDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.vacationRequests.endDate" for="field_endDate">End Date</label>
+            <input type="text" class="form-control" name="endDate" id="field_endDate"
+                [(ngModel)]="vacationRequests.endDate" required/>
+            <div [hidden]="!(editForm.controls.endDate?.dirty && editForm.controls.endDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.endDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.vacationRequests.duration" for="field_duration">Duration</label>
+            <input type="number" class="form-control" name="duration" id="field_duration"
+                [(ngModel)]="vacationRequests.duration" required/>
+            <div [hidden]="!(editForm.controls.duration?.dirty && editForm.controls.duration?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.duration?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.duration?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.vacationRequests.isApproved" for="field_isApproved">Is Approved</label>
+            <input type="checkbox" class="form-control" name="isApproved" id="field_isApproved"
+                [(ngModel)]="vacationRequests.isApproved" />
+            <div [hidden]="!(editForm.controls.isApproved?.dirty && editForm.controls.isApproved?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.isApproved?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.vacationRequests.isCompleated" for="field_isCompleated">Is Compleated</label>
+            <input type="checkbox" class="form-control" name="isCompleated" id="field_isCompleated"
+                [(ngModel)]="vacationRequests.isCompleated" />
+            <div [hidden]="!(editForm.controls.isCompleated?.dirty && editForm.controls.isCompleated?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.isCompleated?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.vacationRequests.owner" for="field_owner">Owner</label>
+            <select class="form-control" id="field_owner" name="owner" [(ngModel)]="vacationRequests.owner" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="employeeOption.id === vacationRequests.owner?.id ? vacationRequests.owner : employeeOption" *ngFor="let employeeOption of employees; trackBy: trackEmployeeById">{{employeeOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

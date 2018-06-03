@@ -1,0 +1,13 @@
+{
+    "patokasApp": {
+        "BenefitType" : {
+            "null": "",
+            "PARKING": "PARKING",
+            "PUBLIC_TRNASPORT": "PUBLIC_TRNASPORT",
+            "HEALTH_INSURANCE": "HEALTH_INSURANCE",
+            "MULTISPORT": "MULTISPORT",
+            "JUNK": "JUNK",
+            "FOOL_VOUCHERS": "FOOL_VOUCHERS"
+        }
+    }
+}

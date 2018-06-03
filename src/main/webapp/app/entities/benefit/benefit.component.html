@@ -1,0 +1,94 @@
+<div>
+    <h2>
+        <span jhiTranslate="patokasApp.benefit.home.title">Benefits</span>
+        <button class="btn btn-primary float-right jh-create-entity create-benefit" [routerLink]="['/', { outlets: { popup: ['benefit-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="patokasApp.benefit.home.createLabel">
+            Create new Benefit
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="benefits">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="startDate"><span jhiTranslate="patokasApp.benefit.startDate">Start Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="endDate"><span jhiTranslate="patokasApp.benefit.endDate">End Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="benefitType"><span jhiTranslate="patokasApp.benefit.benefitType">Benefit Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="employeeOwner.id"><span jhiTranslate="patokasApp.benefit.employeeOwner">Employee Owner</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="externalPersonOwner.id"><span jhiTranslate="patokasApp.benefit.externalPersonOwner">External Person Owner</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="employee.id"><span jhiTranslate="patokasApp.benefit.employee">Employee</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="benefits.id"><span jhiTranslate="patokasApp.benefit.benefits">Benefits</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let benefit of benefits ;trackBy: trackId">
+                <td><a [routerLink]="['../benefit', benefit.id ]">{{benefit.id}}</a></td>
+                <td>{{benefit.startDate | date:'mediumDate'}}</td>
+                <td>{{benefit.endDate | date:'mediumDate'}}</td>
+                <td jhiTranslate="{{'patokasApp.BenefitType.' + benefit.benefitType}}">{{benefit.benefitType}}</td>
+                <td>
+                    <div *ngIf="benefit.employeeOwner">
+                        <a [routerLink]="['../employee', benefit.employeeOwner?.id ]" >{{benefit.employeeOwner?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="benefit.externalPersonOwner">
+                        <a [routerLink]="['../external-person', benefit.externalPersonOwner?.id ]" >{{benefit.externalPersonOwner?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="benefit.employee">
+                        <a [routerLink]="['../employee', benefit.employee?.id ]" >{{benefit.employee?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="benefit.benefits">
+                        <a [routerLink]="['../external-person', benefit.benefits?.id ]" >{{benefit.benefits?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../benefit', benefit.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'benefit/'+ benefit.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'benefit/'+ benefit.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="benefits && benefits.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

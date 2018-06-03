@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Employee.
+    -->
+    <changeSet id="20180603205636-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="contact_information_id"
+                                 baseTableName="employee"
+                                 constraintName="fk_employee_contact_information_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact_information"/>
+
+        <addForeignKeyConstraint baseColumnNames="employee_photo_id"
+                                 baseTableName="employee"
+                                 constraintName="fk_employee_employee_photo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee_photo"/>
+
+        <addForeignKeyConstraint baseColumnNames="work_details_id"
+                                 baseTableName="employee"
+                                 constraintName="fk_employee_work_details_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="work_details"/>
+
+        <addForeignKeyConstraint baseColumnNames="emargency_contact_id"
+                                 baseTableName="employee"
+                                 constraintName="fk_employee_emargency_contact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="emergancy_contact"/>
+
+        <addForeignKeyConstraint baseColumnNames="idcard_id"
+                                 baseTableName="employee"
+                                 constraintName="fk_employee_idcard_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="id_card"/>
+
+        <addForeignKeyConstraint baseColumnNames="financial_details_id"
+                                 baseTableName="employee"
+                                 constraintName="fk_employee_financial_details_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="financial_details"/>
+
+    </changeSet>
+</databaseChangeLog>

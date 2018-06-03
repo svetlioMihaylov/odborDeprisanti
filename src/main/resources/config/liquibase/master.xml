@@ -5,6 +5,27 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205636_added_entity_Employee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205637_added_entity_ContactInformation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205638_added_entity_EmployeePhoto.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205639_added_entity_EmployeePossition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205640_added_entity_EmergancyContact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205641_added_entity_FinancialDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205642_added_entity_WorkDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205643_added_entity_VacationRequests.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205644_added_entity_IDCard.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205645_added_entity_ExternalPerson.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205646_added_entity_Benefit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205647_added_entity_Document.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205648_added_entity_EmployeeNote.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205649_added_entity_DocumentTemplates.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20180603205636_added_entity_constraints_Employee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205642_added_entity_constraints_WorkDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205643_added_entity_constraints_VacationRequests.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205645_added_entity_constraints_ExternalPerson.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205646_added_entity_constraints_Benefit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205647_added_entity_constraints_Document.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180603205648_added_entity_constraints_EmployeeNote.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

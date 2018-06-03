@@ -1,0 +1,27 @@
+
+{
+    "patokasApp": {
+        "vacationRequests" : {
+            "home": {
+                "title": "Vacation Requests",
+                "createLabel": "Create a new Vacation Requests",
+                "createOrEditLabel": "Create or edit a Vacation Requests"
+            },
+            "created": "A new Vacation Requests is created with identifier {{ param }}",
+            "updated": "A Vacation Requests is updated with identifier {{ param }}",
+            "deleted": "A Vacation Requests is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Vacation Requests {{ id }}?"
+            },
+            "detail": {
+                "title": "Vacation Requests"
+            },
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "duration": "Duration",
+            "isApproved": "Is Approved",
+            "isCompleated": "Is Compleated",
+            "owner": "Owner"
+        }
+    }
+}

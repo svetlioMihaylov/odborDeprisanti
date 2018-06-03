@@ -1,0 +1,205 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmployeeLabel" jhiTranslate="patokasApp.employee.home.createOrEditLabel">Create or edit a Employee</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!employee.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="employee.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.firstName" for="field_firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="field_firstName"
+                [(ngModel)]="employee.firstName" required/>
+            <div [hidden]="!(editForm.controls.firstName?.dirty && editForm.controls.firstName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.firstName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.middleName" for="field_middleName">Middle Name</label>
+            <input type="text" class="form-control" name="middleName" id="field_middleName"
+                [(ngModel)]="employee.middleName" required/>
+            <div [hidden]="!(editForm.controls.middleName?.dirty && editForm.controls.middleName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.middleName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.lastName" for="field_lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" id="field_lastName"
+                [(ngModel)]="employee.lastName" required/>
+            <div [hidden]="!(editForm.controls.lastName?.dirty && editForm.controls.lastName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.lastName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.firstNameNative" for="field_firstNameNative">First Name Native</label>
+            <input type="text" class="form-control" name="firstNameNative" id="field_firstNameNative"
+                [(ngModel)]="employee.firstNameNative" required/>
+            <div [hidden]="!(editForm.controls.firstNameNative?.dirty && editForm.controls.firstNameNative?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.firstNameNative?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.middleNameNative" for="field_middleNameNative">Middle Name Native</label>
+            <input type="text" class="form-control" name="middleNameNative" id="field_middleNameNative"
+                [(ngModel)]="employee.middleNameNative" required/>
+            <div [hidden]="!(editForm.controls.middleNameNative?.dirty && editForm.controls.middleNameNative?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.middleNameNative?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.lastNameNative" for="field_lastNameNative">Last Name Native</label>
+            <input type="text" class="form-control" name="lastNameNative" id="field_lastNameNative"
+                [(ngModel)]="employee.lastNameNative" required/>
+            <div [hidden]="!(editForm.controls.lastNameNative?.dirty && editForm.controls.lastNameNative?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.lastNameNative?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.citizenship" for="field_citizenship">Citizenship</label>
+            <input type="text" class="form-control" name="citizenship" id="field_citizenship"
+                [(ngModel)]="employee.citizenship" required/>
+            <div [hidden]="!(editForm.controls.citizenship?.dirty && editForm.controls.citizenship?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.citizenship?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.dateOfBirth" for="field_dateOfBirth">Date Of Birth</label>
+            <div class="input-group">
+                <input id="field_dateOfBirth" type="text" class="form-control" name="dateOfBirth" ngbDatepicker  #dateOfBirthDp="ngbDatepicker" [(ngModel)]="employee.dateOfBirth"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateOfBirthDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateOfBirth?.dirty && editForm.controls.dateOfBirth?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateOfBirth?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.education" for="field_education">Education</label>
+            <input type="text" class="form-control" name="education" id="field_education"
+                [(ngModel)]="employee.education" required/>
+            <div [hidden]="!(editForm.controls.education?.dirty && editForm.controls.education?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.education?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.educationNative" for="field_educationNative">Education Native</label>
+            <input type="text" class="form-control" name="educationNative" id="field_educationNative"
+                [(ngModel)]="employee.educationNative" required/>
+            <div [hidden]="!(editForm.controls.educationNative?.dirty && editForm.controls.educationNative?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.educationNative?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.position" for="field_position">Position</label>
+            <select class="form-control" name="position" [(ngModel)]="employee.position" id="field_position" >
+                <option value="NEW_JOINER">{{'patokasApp.Position.NEW_JOINER' | translate}}</option>
+                <option value="ACTIVE">{{'patokasApp.Position.ACTIVE' | translate}}</option>
+                <option value="LEFT">{{'patokasApp.Position.LEFT' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.sex" for="field_sex">Sex</label>
+            <select class="form-control" name="sex" [(ngModel)]="employee.sex" id="field_sex" >
+                <option value="MALE">{{'patokasApp.Sex.MALE' | translate}}</option>
+                <option value="FEMALE">{{'patokasApp.Sex.FEMALE' | translate}}</option>
+                <option value="OTHER">{{'patokasApp.Sex.OTHER' | translate}}</option>
+                <option value="UNICORN">{{'patokasApp.Sex.UNICORN' | translate}}</option>
+                <option value="APACHE_ATTACK_HELICOPTER">{{'patokasApp.Sex.APACHE_ATTACK_HELICOPTER' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.tShirtSiz" for="field_tShirtSiz">T Shirt Siz</label>
+            <input type="text" class="form-control" name="tShirtSiz" id="field_tShirtSiz"
+                [(ngModel)]="employee.tShirtSiz" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.contactInformation" for="field_contactInformation">Contact Information</label>
+            <select class="form-control" id="field_contactInformation" name="contactInformation" [(ngModel)]="employee.contactInformation">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="contactInformationOption.id === employee.contactInformation?.id ? employee.contactInformation : contactInformationOption" *ngFor="let contactInformationOption of contactinformations; trackBy: trackContactInformationById">{{contactInformationOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.employeePhoto" for="field_employeePhoto">Employee Photo</label>
+            <select class="form-control" id="field_employeePhoto" name="employeePhoto" [(ngModel)]="employee.employeePhoto">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="employeePhotoOption.id === employee.employeePhoto?.id ? employee.employeePhoto : employeePhotoOption" *ngFor="let employeePhotoOption of employeephotos; trackBy: trackEmployeePhotoById">{{employeePhotoOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.workDetails" for="field_workDetails">Work Details</label>
+            <select class="form-control" id="field_workDetails" name="workDetails" [(ngModel)]="employee.workDetails">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="workDetailsOption.id === employee.workDetails?.id ? employee.workDetails : workDetailsOption" *ngFor="let workDetailsOption of workdetails; trackBy: trackWorkDetailsById">{{workDetailsOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.emargencyContact" for="field_emargencyContact">Emargency Contact</label>
+            <select class="form-control" id="field_emargencyContact" name="emargencyContact" [(ngModel)]="employee.emargencyContact">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="emergancyContactOption.id === employee.emargencyContact?.id ? employee.emargencyContact : emergancyContactOption" *ngFor="let emergancyContactOption of emargencycontacts; trackBy: trackEmergancyContactById">{{emergancyContactOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.idcard" for="field_idcard">Idcard</label>
+            <select class="form-control" id="field_idcard" name="idcard" [(ngModel)]="employee.idcard">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="iDCardOption.id === employee.idcard?.id ? employee.idcard : iDCardOption" *ngFor="let iDCardOption of idcards; trackBy: trackIDCardById">{{iDCardOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employee.financialDetails" for="field_financialDetails">Financial Details</label>
+            <select class="form-control" id="field_financialDetails" name="financialDetails" [(ngModel)]="employee.financialDetails">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="financialDetailsOption.id === employee.financialDetails?.id ? employee.financialDetails : financialDetailsOption" *ngFor="let financialDetailsOption of financialdetails; trackBy: trackFinancialDetailsById">{{financialDetailsOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,28 @@
+
+{
+    "patokasApp": {
+        "benefit" : {
+            "home": {
+                "title": "Benefits",
+                "createLabel": "Create a new Benefit",
+                "createOrEditLabel": "Create or edit a Benefit"
+            },
+            "created": "A new Benefit is created with identifier {{ param }}",
+            "updated": "A Benefit is updated with identifier {{ param }}",
+            "deleted": "A Benefit is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Benefit {{ id }}?"
+            },
+            "detail": {
+                "title": "Benefit"
+            },
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "benefitType": "Benefit Type",
+            "employeeOwner": "Employee Owner",
+            "externalPersonOwner": "External Person Owner",
+            "employee": "Employee",
+            "benefits": "Benefits"
+        }
+    }
+}

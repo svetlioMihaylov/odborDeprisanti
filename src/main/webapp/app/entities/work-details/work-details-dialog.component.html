@@ -1,0 +1,99 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myWorkDetailsLabel" jhiTranslate="patokasApp.workDetails.home.createOrEditLabel">Create or edit a Work Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!workDetails.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="workDetails.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.workDetails.startDate" for="field_startDate">Start Date</label>
+            <div class="input-group">
+                <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" [(ngModel)]="workDetails.startDate"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.startDate?.dirty && editForm.controls.startDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.startDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.workDetails.endDate" for="field_endDate">End Date</label>
+            <div class="input-group">
+                <input id="field_endDate" type="text" class="form-control" name="endDate" ngbDatepicker  #endDateDp="ngbDatepicker" [(ngModel)]="workDetails.endDate"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.workDetails.endOfProbationDate" for="field_endOfProbationDate">End Of Probation Date</label>
+            <div class="input-group">
+                <input id="field_endOfProbationDate" type="text" class="form-control" name="endOfProbationDate" ngbDatepicker  #endOfProbationDateDp="ngbDatepicker" [(ngModel)]="workDetails.endOfProbationDate"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="endOfProbationDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.endOfProbationDate?.dirty && editForm.controls.endOfProbationDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.endOfProbationDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.workDetails.salaryReevaluationDate" for="field_salaryReevaluationDate">Salary Reevaluation Date</label>
+            <input type="number" class="form-control" name="salaryReevaluationDate" id="field_salaryReevaluationDate"
+                [(ngModel)]="workDetails.salaryReevaluationDate" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.workDetails.contractNum" for="field_contractNum">Contract Num</label>
+            <input type="number" class="form-control" name="contractNum" id="field_contractNum"
+                [(ngModel)]="workDetails.contractNum" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.workDetails.resignationRequestRefNum" for="field_resignationRequestRefNum">Resignation Request Ref Num</label>
+            <input type="number" class="form-control" name="resignationRequestRefNum" id="field_resignationRequestRefNum"
+                [(ngModel)]="workDetails.resignationRequestRefNum" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.workDetails.resignationOrderRefNum" for="field_resignationOrderRefNum">Resignation Order Ref Num</label>
+            <input type="number" class="form-control" name="resignationOrderRefNum" id="field_resignationOrderRefNum"
+                [(ngModel)]="workDetails.resignationOrderRefNum" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.workDetails.yearVacation" for="field_yearVacation">Year Vacation</label>
+            <input type="number" class="form-control" name="yearVacation" id="field_yearVacation"
+                [(ngModel)]="workDetails.yearVacation" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.workDetails.possition" for="field_possition">Possition</label>
+            <select class="form-control" id="field_possition" name="possition" [(ngModel)]="workDetails.possition">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="employeePossitionOption.id === workDetails.possition?.id ? workDetails.possition : employeePossitionOption" *ngFor="let employeePossitionOption of possitions; trackBy: trackEmployeePossitionById">{{employeePossitionOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

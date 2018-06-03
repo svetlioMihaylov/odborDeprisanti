@@ -1,0 +1,79 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myIDCardLabel" jhiTranslate="patokasApp.iDCard.home.createOrEditLabel">Create or edit a ID Card</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!iDCard.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="iDCard.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.iDCard.idNumber" for="field_idNumber">Id Number</label>
+            <input type="text" class="form-control" name="idNumber" id="field_idNumber"
+                [(ngModel)]="iDCard.idNumber" required/>
+            <div [hidden]="!(editForm.controls.idNumber?.dirty && editForm.controls.idNumber?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.idNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.iDCard.dateOfIssue" for="field_dateOfIssue">Date Of Issue</label>
+            <div class="input-group">
+                <input id="field_dateOfIssue" type="text" class="form-control" name="dateOfIssue" ngbDatepicker  #dateOfIssueDp="ngbDatepicker" [(ngModel)]="iDCard.dateOfIssue"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateOfIssueDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateOfIssue?.dirty && editForm.controls.dateOfIssue?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateOfIssue?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.iDCard.dateOfExpiry" for="field_dateOfExpiry">Date Of Expiry</label>
+            <div class="input-group">
+                <input id="field_dateOfExpiry" type="text" class="form-control" name="dateOfExpiry" ngbDatepicker  #dateOfExpiryDp="ngbDatepicker" [(ngModel)]="iDCard.dateOfExpiry"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateOfExpiryDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateOfExpiry?.dirty && editForm.controls.dateOfExpiry?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateOfExpiry?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.iDCard.issuedBy" for="field_issuedBy">Issued By</label>
+            <input type="text" class="form-control" name="issuedBy" id="field_issuedBy"
+                [(ngModel)]="iDCard.issuedBy" required/>
+            <div [hidden]="!(editForm.controls.issuedBy?.dirty && editForm.controls.issuedBy?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.issuedBy?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

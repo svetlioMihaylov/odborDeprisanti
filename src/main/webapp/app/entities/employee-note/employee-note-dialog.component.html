@@ -1,0 +1,75 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmployeeNoteLabel" jhiTranslate="patokasApp.employeeNote.home.createOrEditLabel">Create or edit a Employee Note</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!employeeNote.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="employeeNote.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employeeNote.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                [(ngModel)]="employeeNote.title" required/>
+            <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employeeNote.text" for="field_text">Text</label>
+            <input type="text" class="form-control" name="text" id="field_text"
+                [(ngModel)]="employeeNote.text" required/>
+            <div [hidden]="!(editForm.controls.text?.dirty && editForm.controls.text?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.text?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employeeNote.date" for="field_date">Date</label>
+            <div class="input-group">
+                <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="employeeNote.date"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employeeNote.employeeNoteType" for="field_employeeNoteType">Employee Note Type</label>
+            <select class="form-control" name="employeeNoteType" [(ngModel)]="employeeNote.employeeNoteType" id="field_employeeNoteType" >
+                <option value="START_WORK">{{'patokasApp.EmployeeNoteType.START_WORK' | translate}}</option>
+                <option value="END_WORK">{{'patokasApp.EmployeeNoteType.END_WORK' | translate}}</option>
+                <option value="END_PROBATION">{{'patokasApp.EmployeeNoteType.END_PROBATION' | translate}}</option>
+                <option value="POSSITION_CHANGE">{{'patokasApp.EmployeeNoteType.POSSITION_CHANGE' | translate}}</option>
+                <option value="SALARY_CHANGE">{{'patokasApp.EmployeeNoteType.SALARY_CHANGE' | translate}}</option>
+                <option value="CUSTOM">{{'patokasApp.EmployeeNoteType.CUSTOM' | translate}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="patokasApp.employeeNote.owner" for="field_owner">Owner</label>
+            <select class="form-control" id="field_owner" name="owner" [(ngModel)]="employeeNote.owner" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="employeeOption.id === employeeNote.owner?.id ? employeeNote.owner : employeeOption" *ngFor="let employeeOption of employees; trackBy: trackEmployeeById">{{employeeOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

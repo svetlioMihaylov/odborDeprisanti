@@ -1,0 +1,48 @@
+
+<div *ngIf="vacationRequests">
+    <h2><span jhiTranslate="patokasApp.vacationRequests.detail.title">Vacation Requests</span> {{vacationRequests.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="patokasApp.vacationRequests.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{vacationRequests.startDate}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.vacationRequests.endDate">End Date</span></dt>
+        <dd>
+            <span>{{vacationRequests.endDate}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.vacationRequests.duration">Duration</span></dt>
+        <dd>
+            <span>{{vacationRequests.duration}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.vacationRequests.isApproved">Is Approved</span></dt>
+        <dd>
+            <span>{{vacationRequests.isApproved}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.vacationRequests.isCompleated">Is Compleated</span></dt>
+        <dd>
+            <span>{{vacationRequests.isCompleated}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.vacationRequests.owner">Owner</span></dt>
+        <dd>
+            <div *ngIf="vacationRequests.owner">
+                <a [routerLink]="['/employee', vacationRequests.owner?.id]">{{vacationRequests.owner?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'vacation-requests/'+ vacationRequests.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,23 @@
+
+{
+    "patokasApp": {
+        "emergancyContact" : {
+            "home": {
+                "title": "Emergancy Contacts",
+                "createLabel": "Create a new Emergancy Contact",
+                "createOrEditLabel": "Create or edit a Emergancy Contact"
+            },
+            "created": "A new Emergancy Contact is created with identifier {{ param }}",
+            "updated": "A Emergancy Contact is updated with identifier {{ param }}",
+            "deleted": "A Emergancy Contact is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Emergancy Contact {{ id }}?"
+            },
+            "detail": {
+                "title": "Emergancy Contact"
+            },
+            "emergencyContactName": "Emergency Contact Name",
+            "emergencyContactPhone": "Emergency Contact Phone"
+        }
+    }
+}

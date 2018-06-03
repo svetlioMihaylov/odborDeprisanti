@@ -1,0 +1,45 @@
+
+{
+    "patokasApp": {
+        "employee" : {
+            "home": {
+                "title": "Employees",
+                "createLabel": "Create a new Employee",
+                "createOrEditLabel": "Create or edit a Employee"
+            },
+            "created": "A new Employee is created with identifier {{ param }}",
+            "updated": "A Employee is updated with identifier {{ param }}",
+            "deleted": "A Employee is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Employee {{ id }}?"
+            },
+            "detail": {
+                "title": "Employee"
+            },
+            "firstName": "First Name",
+            "middleName": "Middle Name",
+            "lastName": "Last Name",
+            "firstNameNative": "First Name Native",
+            "middleNameNative": "Middle Name Native",
+            "lastNameNative": "Last Name Native",
+            "citizenship": "Citizenship",
+            "dateOfBirth": "Date Of Birth",
+            "education": "Education",
+            "educationNative": "Education Native",
+            "position": "Position",
+            "sex": "Sex",
+            "tShirtSiz": "T Shirt Siz",
+            "contactInformation": "Contact Information",
+            "employeePhoto": "Employee Photo",
+            "workDetails": "Work Details",
+            "emargencyContact": "Emargency Contact",
+            "idcard": "Idcard",
+            "financialDetails": "Financial Details",
+            "benefits": "Benefits",
+            "documents": "Documents",
+            "externalPeople": "External People",
+            "notes": "Notes",
+            "vacationRequests": "Vacation Requests"
+        }
+    }
+}

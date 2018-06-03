@@ -1,0 +1,82 @@
+<div>
+    <h2>
+        <span jhiTranslate="patokasApp.externalPerson.home.title">External People</span>
+        <button class="btn btn-primary float-right jh-create-entity create-external-person" [routerLink]="['/', { outlets: { popup: ['external-person-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="patokasApp.externalPerson.home.createLabel">
+            Create new External Person
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="externalPeople">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="firstName"><span jhiTranslate="patokasApp.externalPerson.firstName">First Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="middleName"><span jhiTranslate="patokasApp.externalPerson.middleName">Middle Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastName"><span jhiTranslate="patokasApp.externalPerson.lastName">Last Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="firstNameNative"><span jhiTranslate="patokasApp.externalPerson.firstNameNative">First Name Native</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="middleNameNative"><span jhiTranslate="patokasApp.externalPerson.middleNameNative">Middle Name Native</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastNameNative"><span jhiTranslate="patokasApp.externalPerson.lastNameNative">Last Name Native</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="owner.id"><span jhiTranslate="patokasApp.externalPerson.owner">Owner</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let externalPerson of externalPeople ;trackBy: trackId">
+                <td><a [routerLink]="['../external-person', externalPerson.id ]">{{externalPerson.id}}</a></td>
+                <td>{{externalPerson.firstName}}</td>
+                <td>{{externalPerson.middleName}}</td>
+                <td>{{externalPerson.lastName}}</td>
+                <td>{{externalPerson.firstNameNative}}</td>
+                <td>{{externalPerson.middleNameNative}}</td>
+                <td>{{externalPerson.lastNameNative}}</td>
+                <td>
+                    <div *ngIf="externalPerson.owner">
+                        <a [routerLink]="['../employee', externalPerson.owner?.id ]" >{{externalPerson.owner?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../external-person', externalPerson.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'external-person/'+ externalPerson.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'external-person/'+ externalPerson.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="externalPeople && externalPeople.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

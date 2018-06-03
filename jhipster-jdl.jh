@@ -1,0 +1,202 @@
+entity Employee {
+firstName String required,
+middleName String required,
+lastName String required,
+firstNameNative String required,
+middleNameNative String required,
+lastNameNative String required,
+	citizenship String required,
+    dateOfBirth LocalDate required,
+    education String required,
+    educationNative String required,
+    position Position,
+    sex Sex,
+    tShirtSiz String  
+}
+
+
+entity ContactInformation {
+	permanentAddress String required,
+    currentAddress String required,
+    personalMail String,
+    phone String required
+}
+
+entity EmployeePhoto {
+	photo ImageBlob
+}
+
+entity EmployeePossition {
+	code String required,
+    positionName String required,
+    positionNameNative String required
+}
+
+entity EmergancyContact {
+	emergencyContactName String required,
+    emergencyContactPhone String required
+
+}
+
+
+entity FinancialDetails {
+	iban  String required,
+    bankName String,
+    bic String,
+    baseSalary Double,
+    grossSalary Double,
+    signOnBonus Double,
+    annualBonus Double
+
+}
+
+
+entity WorkDetails {
+	startDate  LocalDate required,
+    endDate LocalDate,
+    endOfProbationDate LocalDate required,
+    salaryReevaluationDate Double,
+    contractNum Double,
+    resignationRequestRefNum Double,
+    resignationOrderRefNum Double,
+    yearVacation Integer
+
+}
+
+entity VacationRequests {
+	startDate  String required,
+    endDate String required,
+    duration Integer required,
+    isApproved Boolean required,
+    isCompleated Boolean required
+  
+
+}
+
+
+
+entity IDCard {
+	idNumber String required,
+    dateOfIssue LocalDate required,
+    dateOfExpiry  LocalDate required,
+    issuedBy String required
+}
+
+
+entity ExternalPerson {
+firstName String required,
+middleName String required,
+lastName String required,
+firstNameNative String required,
+middleNameNative String required,
+lastNameNative String required,
+}
+
+
+entity Benefit {
+	startDate  LocalDate required,
+    endDate LocalDate,
+    benefitType BenefitType
+}
+
+entity Document {
+	fileLocation String,
+	createdOn LocalDate,
+	markedForDelete Boolean
+}
+
+
+entity EmployeeNote {
+	title String required,
+    text String required,
+	date LocalDate,
+    employeeNoteType EmployeeNoteType
+}
+
+entity DocumentTemplates {
+	templateType String,
+    fileLocation String,
+	content TextBlob 
+}
+
+
+  enum Position {
+    NEW_JOINER, ACTIVE, LEFT
+  }
+  
+    enum Sex {
+    MALE, FEMALE, OTHER, UNICORN, APACHE_ATTACK_HELICOPTER
+  }
+  
+      enum BenefitType {
+    PARKING, PUBLIC_TRNASPORT, HEALTH_INSURANCE, MULTISPORT, JUNK, FOOL_VOUCHERS
+  }
+
+        enum EmployeeNoteType {
+    START_WORK, END_WORK, END_PROBATION, POSSITION_CHANGE, SALARY_CHANGE, CUSTOM
+    }
+
+
+relationship OneToOne{
+Employee{contactInformation} to ContactInformation
+}
+
+relationship OneToOne{
+Employee{employeePhoto} to EmployeePhoto
+}
+
+relationship OneToOne{
+Employee{workDetails} to WorkDetails
+}
+
+relationship OneToOne{
+Employee{emargencyContact} to EmergancyContact
+}
+
+relationship OneToOne{
+Employee{idcard} to IDCard
+}
+relationship OneToOne{
+Employee{financialDetails} to FinancialDetails
+}
+
+relationship OneToMany{
+Employee{benefits} to Benefit{employee}
+}
+
+relationship OneToMany{
+Employee{documents} to Document{owner}
+}
+
+relationship OneToMany{
+Employee{externalPeople} to ExternalPerson{owner}
+}
+
+relationship OneToMany{
+Employee{notes} to EmployeeNote{owner}
+}
+
+
+relationship OneToMany{
+Employee{vacationRequests} to VacationRequests{owner}
+}
+
+relationship OneToOne{
+WorkDetails{possition} to EmployeePossition
+}
+
+relationship ManyToOne{
+Benefit{employeeOwner} to Employee
+}
+relationship ManyToOne{
+Benefit{externalPersonOwner} to ExternalPerson
+}
+
+
+relationship OneToMany{
+ExternalPerson{owner} to Benefit{benefits}
+}
+
+service all with serviceImpl
+paginate all with pagination
+

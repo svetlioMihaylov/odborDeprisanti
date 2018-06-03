@@ -1,0 +1,22 @@
+
+{
+    "patokasApp": {
+        "employeePhoto" : {
+            "home": {
+                "title": "Employee Photos",
+                "createLabel": "Create a new Employee Photo",
+                "createOrEditLabel": "Create or edit a Employee Photo"
+            },
+            "created": "A new Employee Photo is created with identifier {{ param }}",
+            "updated": "A Employee Photo is updated with identifier {{ param }}",
+            "deleted": "A Employee Photo is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Employee Photo {{ id }}?"
+            },
+            "detail": {
+                "title": "Employee Photo"
+            },
+            "photo": "Photo"
+        }
+    }
+}

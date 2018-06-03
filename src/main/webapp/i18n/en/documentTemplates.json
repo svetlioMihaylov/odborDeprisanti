@@ -1,0 +1,24 @@
+
+{
+    "patokasApp": {
+        "documentTemplates" : {
+            "home": {
+                "title": "Document Templates",
+                "createLabel": "Create a new Document Templates",
+                "createOrEditLabel": "Create or edit a Document Templates"
+            },
+            "created": "A new Document Templates is created with identifier {{ param }}",
+            "updated": "A Document Templates is updated with identifier {{ param }}",
+            "deleted": "A Document Templates is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Document Templates {{ id }}?"
+            },
+            "detail": {
+                "title": "Document Templates"
+            },
+            "templateType": "Template Type",
+            "fileLocation": "File Location",
+            "content": "Content"
+        }
+    }
+}

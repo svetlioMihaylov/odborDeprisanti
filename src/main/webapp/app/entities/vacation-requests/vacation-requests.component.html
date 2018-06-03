@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="patokasApp.vacationRequests.home.title">Vacation Requests</span>
+        <button class="btn btn-primary float-right jh-create-entity create-vacation-requests" [routerLink]="['/', { outlets: { popup: ['vacation-requests-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="patokasApp.vacationRequests.home.createLabel">
+            Create new Vacation Requests
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="vacationRequests">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="startDate"><span jhiTranslate="patokasApp.vacationRequests.startDate">Start Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="endDate"><span jhiTranslate="patokasApp.vacationRequests.endDate">End Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="duration"><span jhiTranslate="patokasApp.vacationRequests.duration">Duration</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="isApproved"><span jhiTranslate="patokasApp.vacationRequests.isApproved">Is Approved</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="isCompleated"><span jhiTranslate="patokasApp.vacationRequests.isCompleated">Is Compleated</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="owner.id"><span jhiTranslate="patokasApp.vacationRequests.owner">Owner</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let vacationRequests of vacationRequests ;trackBy: trackId">
+                <td><a [routerLink]="['../vacation-requests', vacationRequests.id ]">{{vacationRequests.id}}</a></td>
+                <td>{{vacationRequests.startDate}}</td>
+                <td>{{vacationRequests.endDate}}</td>
+                <td>{{vacationRequests.duration}}</td>
+                <td>{{vacationRequests.isApproved}}</td>
+                <td>{{vacationRequests.isCompleated}}</td>
+                <td>
+                    <div *ngIf="vacationRequests.owner">
+                        <a [routerLink]="['../employee', vacationRequests.owner?.id ]" >{{vacationRequests.owner?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../vacation-requests', vacationRequests.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'vacation-requests/'+ vacationRequests.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'vacation-requests/'+ vacationRequests.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="vacationRequests && vacationRequests.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

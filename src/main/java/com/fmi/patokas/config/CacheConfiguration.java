@@ -41,6 +41,26 @@ public class CacheConfiguration {
             cm.createCache(com.fmi.patokas.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.fmi.patokas.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.fmi.patokas.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.Employee.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.Employee.class.getName() + ".benefits", jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.Employee.class.getName() + ".documents", jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.Employee.class.getName() + ".externalPeople", jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.Employee.class.getName() + ".notes", jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.Employee.class.getName() + ".vacationRequests", jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.ContactInformation.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.EmployeePhoto.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.EmployeePossition.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.EmergancyContact.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.FinancialDetails.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.WorkDetails.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.VacationRequests.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.IDCard.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.ExternalPerson.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.ExternalPerson.class.getName() + ".owners", jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.Benefit.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.Document.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.EmployeeNote.class.getName(), jcacheConfiguration);
+            cm.createCache(com.fmi.patokas.domain.DocumentTemplates.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

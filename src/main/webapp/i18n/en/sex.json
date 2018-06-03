@@ -1,0 +1,12 @@
+{
+    "patokasApp": {
+        "Sex" : {
+            "null": "",
+            "MALE": "MALE",
+            "FEMALE": "FEMALE",
+            "OTHER": "OTHER",
+            "UNICORN": "UNICORN",
+            "APACHE_ATTACK_HELICOPTER": "APACHE_ATTACK_HELICOPTER"
+        }
+    }
+}

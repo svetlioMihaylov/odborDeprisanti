@@ -1,0 +1,110 @@
+
+<div *ngIf="employee">
+    <h2><span jhiTranslate="patokasApp.employee.detail.title">Employee</span> {{employee.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="patokasApp.employee.firstName">First Name</span></dt>
+        <dd>
+            <span>{{employee.firstName}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.middleName">Middle Name</span></dt>
+        <dd>
+            <span>{{employee.middleName}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.lastName">Last Name</span></dt>
+        <dd>
+            <span>{{employee.lastName}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.firstNameNative">First Name Native</span></dt>
+        <dd>
+            <span>{{employee.firstNameNative}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.middleNameNative">Middle Name Native</span></dt>
+        <dd>
+            <span>{{employee.middleNameNative}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.lastNameNative">Last Name Native</span></dt>
+        <dd>
+            <span>{{employee.lastNameNative}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.citizenship">Citizenship</span></dt>
+        <dd>
+            <span>{{employee.citizenship}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.dateOfBirth">Date Of Birth</span></dt>
+        <dd>
+            <span>{{employee.dateOfBirth | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.education">Education</span></dt>
+        <dd>
+            <span>{{employee.education}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.educationNative">Education Native</span></dt>
+        <dd>
+            <span>{{employee.educationNative}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.position">Position</span></dt>
+        <dd>
+            <span jhiTranslate="{{'patokasApp.Position.' + employee.position}}">{{employee.position}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.sex">Sex</span></dt>
+        <dd>
+            <span jhiTranslate="{{'patokasApp.Sex.' + employee.sex}}">{{employee.sex}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.tShirtSiz">T Shirt Siz</span></dt>
+        <dd>
+            <span>{{employee.tShirtSiz}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.contactInformation">Contact Information</span></dt>
+        <dd>
+            <div *ngIf="employee.contactInformation">
+                <a [routerLink]="['/contact-information', employee.contactInformation?.id]">{{employee.contactInformation?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.employeePhoto">Employee Photo</span></dt>
+        <dd>
+            <div *ngIf="employee.employeePhoto">
+                <a [routerLink]="['/employee-photo', employee.employeePhoto?.id]">{{employee.employeePhoto?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.workDetails">Work Details</span></dt>
+        <dd>
+            <div *ngIf="employee.workDetails">
+                <a [routerLink]="['/work-details', employee.workDetails?.id]">{{employee.workDetails?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.emargencyContact">Emargency Contact</span></dt>
+        <dd>
+            <div *ngIf="employee.emargencyContact">
+                <a [routerLink]="['/emergancy-contact', employee.emargencyContact?.id]">{{employee.emargencyContact?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.idcard">Idcard</span></dt>
+        <dd>
+            <div *ngIf="employee.idcard">
+                <a [routerLink]="['/id-card', employee.idcard?.id]">{{employee.idcard?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.employee.financialDetails">Financial Details</span></dt>
+        <dd>
+            <div *ngIf="employee.financialDetails">
+                <a [routerLink]="['/financial-details', employee.financialDetails?.id]">{{employee.financialDetails?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'employee/'+ employee.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

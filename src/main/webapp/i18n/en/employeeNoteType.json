@@ -1,0 +1,13 @@
+{
+    "patokasApp": {
+        "EmployeeNoteType" : {
+            "null": "",
+            "START_WORK": "START_WORK",
+            "END_WORK": "END_WORK",
+            "END_PROBATION": "END_PROBATION",
+            "POSSITION_CHANGE": "POSSITION_CHANGE",
+            "SALARY_CHANGE": "SALARY_CHANGE",
+            "CUSTOM": "CUSTOM"
+        }
+    }
+}

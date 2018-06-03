@@ -1,0 +1,34 @@
+
+<div *ngIf="documentTemplates">
+    <h2><span jhiTranslate="patokasApp.documentTemplates.detail.title">Document Templates</span> {{documentTemplates.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="patokasApp.documentTemplates.templateType">Template Type</span></dt>
+        <dd>
+            <span>{{documentTemplates.templateType}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.documentTemplates.fileLocation">File Location</span></dt>
+        <dd>
+            <span>{{documentTemplates.fileLocation}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.documentTemplates.content">Content</span></dt>
+        <dd>
+            <span>{{documentTemplates.content}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'document-templates/'+ documentTemplates.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

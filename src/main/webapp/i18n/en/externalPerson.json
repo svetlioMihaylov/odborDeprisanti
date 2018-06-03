@@ -1,0 +1,29 @@
+
+{
+    "patokasApp": {
+        "externalPerson" : {
+            "home": {
+                "title": "External People",
+                "createLabel": "Create a new External Person",
+                "createOrEditLabel": "Create or edit a External Person"
+            },
+            "created": "A new External Person is created with identifier {{ param }}",
+            "updated": "A External Person is updated with identifier {{ param }}",
+            "deleted": "A External Person is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete External Person {{ id }}?"
+            },
+            "detail": {
+                "title": "External Person"
+            },
+            "firstName": "First Name",
+            "middleName": "Middle Name",
+            "lastName": "Last Name",
+            "firstNameNative": "First Name Native",
+            "middleNameNative": "Middle Name Native",
+            "lastNameNative": "Last Name Native",
+            "owner": "Owner",
+            "owner": "Owner"
+        }
+    }
+}

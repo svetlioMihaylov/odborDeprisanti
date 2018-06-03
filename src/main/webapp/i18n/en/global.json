@@ -7,6 +7,20 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "employee": "Employee",
+                "contactInformation": "Contact Information",
+                "employeePhoto": "Employee Photo",
+                "employeePossition": "Employee Possition",
+                "emergancyContact": "Emergancy Contact",
+                "financialDetails": "Financial Details",
+                "workDetails": "Work Details",
+                "vacationRequests": "Vacation Requests",
+                "idCard": "ID Card",
+                "externalPerson": "External Person",
+                "benefit": "Benefit",
+                "document": "Document",
+                "employeeNote": "Employee Note",
+                "documentTemplates": "Document Templates",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

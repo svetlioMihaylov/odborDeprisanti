@@ -1,0 +1,40 @@
+
+<div *ngIf="document">
+    <h2><span jhiTranslate="patokasApp.document.detail.title">Document</span> {{document.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="patokasApp.document.fileLocation">File Location</span></dt>
+        <dd>
+            <span>{{document.fileLocation}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.document.createdOn">Created On</span></dt>
+        <dd>
+            <span>{{document.createdOn | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.document.markedForDelete">Marked For Delete</span></dt>
+        <dd>
+            <span>{{document.markedForDelete}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.document.owner">Owner</span></dt>
+        <dd>
+            <div *ngIf="document.owner">
+                <a [routerLink]="['/employee', document.owner?.id]">{{document.owner?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'document/'+ document.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

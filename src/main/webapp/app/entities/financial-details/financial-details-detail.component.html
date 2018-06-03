@@ -1,0 +1,50 @@
+
+<div *ngIf="financialDetails">
+    <h2><span jhiTranslate="patokasApp.financialDetails.detail.title">Financial Details</span> {{financialDetails.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="patokasApp.financialDetails.iban">Iban</span></dt>
+        <dd>
+            <span>{{financialDetails.iban}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.financialDetails.bankName">Bank Name</span></dt>
+        <dd>
+            <span>{{financialDetails.bankName}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.financialDetails.bic">Bic</span></dt>
+        <dd>
+            <span>{{financialDetails.bic}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.financialDetails.baseSalary">Base Salary</span></dt>
+        <dd>
+            <span>{{financialDetails.baseSalary}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.financialDetails.grossSalary">Gross Salary</span></dt>
+        <dd>
+            <span>{{financialDetails.grossSalary}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.financialDetails.signOnBonus">Sign On Bonus</span></dt>
+        <dd>
+            <span>{{financialDetails.signOnBonus}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.financialDetails.annualBonus">Annual Bonus</span></dt>
+        <dd>
+            <span>{{financialDetails.annualBonus}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'financial-details/'+ financialDetails.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,31 @@
+
+<div *ngIf="employeePhoto">
+    <h2><span jhiTranslate="patokasApp.employeePhoto.detail.title">Employee Photo</span> {{employeePhoto.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="patokasApp.employeePhoto.photo">Photo</span></dt>
+        <dd>
+            <div *ngIf="employeePhoto.photo">
+                <a (click)="openFile(employeePhoto.photoContentType, employeePhoto.photo)">
+                    <img [src]="'data:' + employeePhoto.photoContentType + ';base64,' + employeePhoto.photo" style="max-width: 100%;" alt="employeePhoto image"/>
+                </a>
+                {{employeePhoto.photoContentType}}, {{byteSize(employeePhoto.photo)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'employee-photo/'+ employeePhoto.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,58 @@
+
+<div *ngIf="benefit">
+    <h2><span jhiTranslate="patokasApp.benefit.detail.title">Benefit</span> {{benefit.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="patokasApp.benefit.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{benefit.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.benefit.endDate">End Date</span></dt>
+        <dd>
+            <span>{{benefit.endDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.benefit.benefitType">Benefit Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'patokasApp.BenefitType.' + benefit.benefitType}}">{{benefit.benefitType}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.benefit.employeeOwner">Employee Owner</span></dt>
+        <dd>
+            <div *ngIf="benefit.employeeOwner">
+                <a [routerLink]="['/employee', benefit.employeeOwner?.id]">{{benefit.employeeOwner?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.benefit.externalPersonOwner">External Person Owner</span></dt>
+        <dd>
+            <div *ngIf="benefit.externalPersonOwner">
+                <a [routerLink]="['/external-person', benefit.externalPersonOwner?.id]">{{benefit.externalPersonOwner?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.benefit.employee">Employee</span></dt>
+        <dd>
+            <div *ngIf="benefit.employee">
+                <a [routerLink]="['/employee', benefit.employee?.id]">{{benefit.employee?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.benefit.benefits">Benefits</span></dt>
+        <dd>
+            <div *ngIf="benefit.benefits">
+                <a [routerLink]="['/external-person', benefit.benefits?.id]">{{benefit.benefits?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'benefit/'+ benefit.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

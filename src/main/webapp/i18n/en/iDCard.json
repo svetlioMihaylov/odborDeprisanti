@@ -1,0 +1,25 @@
+
+{
+    "patokasApp": {
+        "iDCard" : {
+            "home": {
+                "title": "ID Cards",
+                "createLabel": "Create a new ID Card",
+                "createOrEditLabel": "Create or edit a ID Card"
+            },
+            "created": "A new ID Card is created with identifier {{ param }}",
+            "updated": "A ID Card is updated with identifier {{ param }}",
+            "deleted": "A ID Card is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete ID Card {{ id }}?"
+            },
+            "detail": {
+                "title": "ID Card"
+            },
+            "idNumber": "Id Number",
+            "dateOfIssue": "Date Of Issue",
+            "dateOfExpiry": "Date Of Expiry",
+            "issuedBy": "Issued By"
+        }
+    }
+}

@@ -1,0 +1,60 @@
+
+<div *ngIf="workDetails">
+    <h2><span jhiTranslate="patokasApp.workDetails.detail.title">Work Details</span> {{workDetails.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="patokasApp.workDetails.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{workDetails.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.workDetails.endDate">End Date</span></dt>
+        <dd>
+            <span>{{workDetails.endDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.workDetails.endOfProbationDate">End Of Probation Date</span></dt>
+        <dd>
+            <span>{{workDetails.endOfProbationDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.workDetails.salaryReevaluationDate">Salary Reevaluation Date</span></dt>
+        <dd>
+            <span>{{workDetails.salaryReevaluationDate}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.workDetails.contractNum">Contract Num</span></dt>
+        <dd>
+            <span>{{workDetails.contractNum}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.workDetails.resignationRequestRefNum">Resignation Request Ref Num</span></dt>
+        <dd>
+            <span>{{workDetails.resignationRequestRefNum}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.workDetails.resignationOrderRefNum">Resignation Order Ref Num</span></dt>
+        <dd>
+            <span>{{workDetails.resignationOrderRefNum}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.workDetails.yearVacation">Year Vacation</span></dt>
+        <dd>
+            <span>{{workDetails.yearVacation}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.workDetails.possition">Possition</span></dt>
+        <dd>
+            <div *ngIf="workDetails.possition">
+                <a [routerLink]="['/employee-possition', workDetails.possition?.id]">{{workDetails.possition?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'work-details/'+ workDetails.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

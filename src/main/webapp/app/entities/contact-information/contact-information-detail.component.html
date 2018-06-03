@@ -1,0 +1,38 @@
+
+<div *ngIf="contactInformation">
+    <h2><span jhiTranslate="patokasApp.contactInformation.detail.title">Contact Information</span> {{contactInformation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="patokasApp.contactInformation.permanentAddress">Permanent Address</span></dt>
+        <dd>
+            <span>{{contactInformation.permanentAddress}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.contactInformation.currentAddress">Current Address</span></dt>
+        <dd>
+            <span>{{contactInformation.currentAddress}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.contactInformation.personalMail">Personal Mail</span></dt>
+        <dd>
+            <span>{{contactInformation.personalMail}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.contactInformation.phone">Phone</span></dt>
+        <dd>
+            <span>{{contactInformation.phone}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'contact-information/'+ contactInformation.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

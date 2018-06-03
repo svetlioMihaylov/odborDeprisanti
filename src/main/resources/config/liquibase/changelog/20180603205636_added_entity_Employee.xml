@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Employee.
+    -->
+    <changeSet id="20180603205636-1" author="jhipster">
+        <createTable tableName="employee">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="middle_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="first_name_native" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="middle_name_native" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="last_name_native" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="citizenship" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="date_of_birth" type="date">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="education" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="education_native" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="position" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="sex" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="t_shirt_siz" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="contact_information_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="employee_photo_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="work_details_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="emargency_contact_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="idcard_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="financial_details_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

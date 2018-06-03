@@ -1,0 +1,52 @@
+
+<div *ngIf="externalPerson">
+    <h2><span jhiTranslate="patokasApp.externalPerson.detail.title">External Person</span> {{externalPerson.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="patokasApp.externalPerson.firstName">First Name</span></dt>
+        <dd>
+            <span>{{externalPerson.firstName}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.externalPerson.middleName">Middle Name</span></dt>
+        <dd>
+            <span>{{externalPerson.middleName}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.externalPerson.lastName">Last Name</span></dt>
+        <dd>
+            <span>{{externalPerson.lastName}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.externalPerson.firstNameNative">First Name Native</span></dt>
+        <dd>
+            <span>{{externalPerson.firstNameNative}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.externalPerson.middleNameNative">Middle Name Native</span></dt>
+        <dd>
+            <span>{{externalPerson.middleNameNative}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.externalPerson.lastNameNative">Last Name Native</span></dt>
+        <dd>
+            <span>{{externalPerson.lastNameNative}}</span>
+        </dd>
+        <dt><span jhiTranslate="patokasApp.externalPerson.owner">Owner</span></dt>
+        <dd>
+            <div *ngIf="externalPerson.owner">
+                <a [routerLink]="['/employee', externalPerson.owner?.id]">{{externalPerson.owner?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'external-person/'+ externalPerson.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
